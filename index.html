@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chime Adaeze Edith — Screenwriter & Film Production Manager</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --black: #080808;
+        --deep: #101010;
+        --card: #161616;
+        --border: #272727;
+        --gold: #c9a84c;
+        --gold-lt: #e8c97a;
+        --white: #f5f0ea;
+        --muted: #888;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 2.5rem;
+        background: rgba(8, 8, 8, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--gold-lt);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--gold);
+        transition: all 0.3s;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 55% 40% at 50% 38%,
+            rgba(201, 168, 76, 0.09) 0%,
+            transparent 68%
+          ),
+          radial-gradient(
+            ellipse 30% 20% at 80% 80%,
+            rgba(201, 168, 76, 0.04) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.4rem;
+      }
+      .hero-name {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 8vw, 6.5rem);
+        line-height: 1.05;
+        font-weight: 700;
+        color: var(--white);
+      }
+      .hero-name span {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .hero-title {
+        margin-top: 0.8rem;
+        font-size: clamp(0.85rem, 1.8vw, 1rem);
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .hero-quote {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(0.92rem, 2vw, 1.12rem);
+        color: rgba(245, 240, 234, 0.5);
+        max-width: 500px;
+        margin: 1.8rem auto 2.6rem;
+        line-height: 1.75;
+      }
+      .hero-cta {
+        display: inline-block;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 0.75rem 2.2rem;
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition:
+          background 0.25s,
+          color 0.25s;
+      }
+      .hero-cta:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+
+      /* ── DIVIDER ── */
+      .divider {
+        width: 60px;
+        height: 1px;
+        background: var(--gold);
+        margin: 0 auto;
+      }
+
+      /* ── SECTIONS ── */
+      .section-wrap {
+        padding: 5.5rem 2rem;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+        font-weight: 400;
+        margin-bottom: 2.8rem;
+        color: var(--white);
+      }
+
+      /* ── ABOUT ── */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .about-photo-wrap {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: var(--card);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        position: relative;
+      }
+      .about-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .about-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+      }
+      .about-text p {
+        color: var(--muted);
+        margin-bottom: 0.9rem;
+        font-size: 0.93rem;
+      }
+      .quote-block {
+        border-left: 2px solid var(--gold);
+        padding-left: 1.2rem;
+        margin: 1.5rem 0;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 0.97rem;
+        color: rgba(245, 240, 234, 0.7);
+        line-height: 1.7;
+      }
+      .stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.8rem;
+        flex-wrap: wrap;
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: var(--gold);
+        display: block;
+      }
+      .stat-lbl {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      .skills-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+      }
+      .pill {
+        border: 1px solid var(--border);
+        padding: 0.3rem 0.9rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* ── FEATURED ── */
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+      .feat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 1.6rem;
+        transition: border-color 0.25s;
+      }
+      .feat-card:hover {
+        border-color: var(--gold);
+      }
+      .feat-year {
+        font-size: 0.68rem;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.4rem;
+      }
+      .feat-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        margin-bottom: 0.35rem;
+      }
+      .feat-role {
+        font-size: 0.72rem;
+        color: var(--gold-lt);
+        letter-spacing: 0.07em;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+      }
+      .feat-platform {
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin-bottom: 0.9rem;
+      }
+      .feat-desc {
+        font-size: 0.85rem;
+        color: rgba(245, 240, 234, 0.5);
+        line-height: 1.65;
+      }
+
+      /* ── FILMOGRAPHY ── */
+      .films-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .film-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .film-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-4px);
+      }
+      .film-poster-box {
+        width: 100%;
+        aspect-ratio: 2/3;
+        background: var(--deep);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .film-poster-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .film-poster-box .no-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        width: 100%;
+        height: 100%;
+      }
+      .film-poster-box .no-img span:first-child {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--border);
+      }
+      .film-poster-box .no-img span:last-child {
+        font-size: 1.4rem;
+        color: var(--border);
+      }
+      .film-info {
+        padding: 0.8rem 0.9rem;
+        border-top: 1px solid var(--border);
+      }
+      .film-title-t {
+        font-family: "Playfair Display", serif;
+        font-size: 0.95rem;
+        margin-bottom: 0.15rem;
+      }
+      .film-meta-t {
+        font-size: 0.68rem;
+        color: var(--muted);
+      }
+      .film-role-t {
+        font-size: 0.7rem;
+        color: var(--gold);
+        margin-top: 0.25rem;
+      }
+
+      /* ── CONTACT ── */
+      #contact {
+        text-align: center;
+      }
+      #contact .section-title {
+        margin-bottom: 0.8rem;
+      }
+      #contact > .section-wrap > p {
+        color: var(--muted);
+        max-width: 480px;
+        margin: 0 auto 2.2rem;
+        font-size: 0.92rem;
+      }
+      .contact-links {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .contact-link {
+        border: 1px solid var(--border);
+        color: var(--white);
+        padding: 0.65rem 1.6rem;
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .contact-link:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        border-top: 1px solid var(--border);
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.9rem 1.2rem;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(8, 8, 8, 0.97);
+          border-bottom: 1px solid var(--border);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 0.9rem 1.5rem;
+          font-size: 0.8rem;
+          border-bottom: 1px solid var(--border);
+        }
+        .nav-links a:last-child {
+          border-bottom: none;
+        }
+
+        .hero {
+          padding: 6rem 1.4rem 3rem;
+        }
+        .hero-name {
+          font-size: clamp(2.4rem, 11vw, 3.5rem);
+        }
+        .hero-title {
+          font-size: 0.78rem;
+          letter-spacing: 0.08em;
+        }
+        .hero-quote {
+          font-size: 0.9rem;
+          margin: 1.2rem auto 2rem;
+        }
+
+        .section-wrap {
+          padding: 3.5rem 1.2rem;
+        }
+        .section-title {
+          margin-bottom: 1.8rem;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .about-photo-wrap {
+          max-width: 260px;
+          margin: 0 auto;
+        }
+        .about-text h2 {
+          font-size: 1.5rem;
+        }
+        .stats {
+          gap: 1.4rem;
+        }
+        .stat-num {
+          font-size: 1.6rem;
+        }
+
+        .featured-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .feat-card {
+          padding: 1.2rem;
+        }
+
+        .films-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.8rem;
+        }
+
+        .contact-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.8rem;
+        }
+        .contact-link {
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+        }
+
+        footer {
+          font-size: 0.65rem;
+          line-height: 1.9;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .hero {
+          padding: 5.5rem 1rem 2.5rem;
+        }
+        .hero-name {
+          font-size: clamp(2rem, 13vw, 2.8rem);
+        }
+        .section-wrap {
+          padding: 2.8rem 1rem;
+        }
+        .films-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+        .film-info {
+          padding: 0.6rem 0.7rem;
+        }
+        .film-title-t {
+          font-size: 0.82rem;
+        }
+        .film-meta-t,
+        .film-role-t {
+          font-size: 0.62rem;
+        }
+        .pill {
+          font-size: 0.62rem;
+          padding: 0.25rem 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-name">Adaeze Chime</div>
+      <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#featured" onclick="closeMenu()">Featured</a>
+        <a href="#films" onclick="closeMenu()">Films</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="hero-eyebrow">Nollywood · Lagos, Nigeria</p>
+      <h1 class="hero-name">Chime <span>Adaeze</span> Edith</h1>
+      <p class="hero-title">
+        Screenwriter &nbsp;·&nbsp; Film Production Manager
+      </p>
+      <p class="hero-quote">
+        "Creating stories that connect, inspire, and endure."
+      </p>
+      <a href="#films" class="hero-cta">View Filmography</a>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section-wrap" id="about">
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <img src="images/headshot.jpg" alt="Chime Adaeze Edith" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">About</p>
+          <h2>Screenwriter &amp;<br />Production Manager</h2>
+          <p>
+            Chime Adaeze Edith is a passionate Screenwriter and Film Production
+            Manager with a growing reputation for creating compelling stories
+            within Nollywood.
+          </p>
+          <p>
+            Her storytelling is rooted in authenticity, emotional depth, and
+            relatable experiences — spanning romance, family drama, comedy, and
+            relationship-driven narratives that resonate with audiences
+            everywhere.
+          </p>
+          <div class="quote-block">
+            "I believe that the most impactful stories are the ones audiences
+            can see themselves in."
+          </div>
+          <div class="stats">
+            <div>
+              <span class="stat-num">40+</span
+              ><span class="stat-lbl">Screenplays</span>
+            </div>
+            <div>
+              <span class="stat-num">22+</span
+              ><span class="stat-lbl">Productions</span>
+            </div>
+            <div>
+              <span class="stat-num">2+</span
+              ><span class="stat-lbl">Years Exp.</span>
+            </div>
+          </div>
+          <div class="skills-row">
+            <span class="pill">Screenwriting</span>
+            <span class="pill">Production Mgmt</span>
+            <span class="pill">Script Editing</span>
+            <span class="pill">Scheduling</span>
+            <span class="pill">Story Dev</span>
+            <span class="pill">Set Management</span>
+            <span class="pill">Character Dev</span>
+            <span class="pill">Dialogue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FEATURED -->
+    <div class="section-wrap" id="featured">
+      <p class="section-label">Featured</p>
+      <h2 class="section-title">Spotlight Projects</h2>
+      <div class="featured-grid">
+        <div class="feat-card">
+          <div class="feat-year">2025</div>
+          <div class="feat-title">Loving A Gen Z</div>
+          <div class="feat-role">Screenwriter &amp; Production Manager</div>
+          <div class="feat-platform">📺 Kanayo O. Kanayo TV</div>
+          <div class="feat-desc">
+            A contemporary romance exploring the dynamics of modern
+            relationships and generational perspectives on love.
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-year">2025</div>
+          <div class="feat-title">Behind The Mask</div>
+          <div class="feat-role">Screenwriter</div>
+          <div class="feat-platform">📺 Kanayo O. Kanayo TV</div>
+          <div class="feat-desc">
+            A compelling drama uncovering hidden truths, deception, and the
+            consequences of living behind a carefully constructed facade.
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-year">2025</div>
+          <div class="feat-title">Trouble In Lagos</div>
+          <div class="feat-role">
+            Screenwriter, Actor &amp; Production Manager
+          </div>
+          <div class="feat-platform">📺 Kanayo O. Kanayo TV</div>
+          <div class="feat-desc">
+            A vibrant and entertaining story capturing the unpredictability and
+            excitement of life in Lagos.
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-year">2024</div>
+          <div class="feat-title">My Name Is Not Duke</div>
+          <div class="feat-role">Screenwriter</div>
+          <div class="feat-platform">📺 Kanayo O. Kanayo TV</div>
+          <div class="feat-desc">
+            A gripping story centred on identity, perception, and
+            self-discovery.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FILMOGRAPHY -->
+    <div class="section-wrap" id="films">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Full Filmography</h2>
+      <div class="films-grid" id="filmsGrid"></div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact">
+      <div class="section-wrap" style="text-align: center">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Bookings &amp; Inquiries</h2>
+        <p
+          style="
+            color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto 2.2rem;
+            font-size: 0.92rem;
+          "
+        >
+          For screenwriting commissions, production collaborations, or press
+          inquiries — reach out directly.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:Pecaedith5@gmail.com" class="contact-link"
+            >✉️ Email</a
+          >
+          <a href="tel:+2348138797247" class="contact-link">📞 Call</a>
+          <a
+            href="https://instagram.com/_adaezechime"
+            class="contact-link"
+            target="_blank"
+            >Instagram</a
+          >
+          <a
+            href="https://www.linkedin.com/in/adaeze-chime"
+            class="contact-link"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.imdb.com/title/tt35485918/"
+            class="contact-link"
+            target="_blank"
+            >IMDb</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Chime Adaeze Edith &nbsp;·&nbsp; Screenwriter &amp; Film
+      Production Manager &nbsp;·&nbsp; Lagos, Nigeria
+    </footer>
+
+    <script>
+      /* ── FILM DATA
+     Save your poster images in an "images" folder next to this file.
+     Name them: 1.jpg, 2.jpg, 3.jpg ... 13.jpg
+     They will appear automatically below.
+  ── */
+      const films = [
+        {
+          title: "Loving A Gen Z",
+          year: "2025",
+          role: "Screenwriter & Production Manager",
+        },
+        {
+          title: "Our Husband",
+          year: "2025",
+          role: "Screenwriter & Production Manager",
+        },
+        {
+          title: "Black Blood",
+          year: "2025",
+          role: "Screenwriter & Production Manager",
+        },
+        {
+          title: "Trouble In Lagos",
+          year: "2025",
+          role: "Screenwriter, Actor & Prod. Manager",
+        },
+        { title: "Behind The Mask", year: "2025", role: "Screenwriter" },
+        { title: "Hearts In Between", year: "2025", role: "Screenwriter" },
+        { title: "Butterflies Again", year: "2025", role: "Screenwriter" },
+        { title: "Sacrifice My Madness", year: "2025", role: "Screenwriter" },
+        {
+          title: "Professor One Mouth",
+          year: "2024",
+          role: "Screenwriter & Prod. Coordinator",
+        },
+        { title: "My Name Is Not Duke", year: "2024", role: "Screenwriter" },
+        { title: "Bloodline", year: "2026", role: "Screenwriter" },
+        { title: "One Night To Forever", year: "2026", role: "Screenwriter" },
+        { title: "Love And Light", year: "2026", role: "Screenwriter" },
+      ];
+
+      const grid = document.getElementById("filmsGrid");
+      films.forEach((f, i) => {
+        const num = i + 1;
+        const card = document.createElement("div");
+        card.className = "film-card";
+        card.innerHTML = `
+      <div class="film-poster-box">
+        <img
+          src="images/${num}.jpg"
+          alt="${f.title}"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="no-img" style="display:none;">
+          <span>${String(num).padStart(2, "0")}</span>
+          <span>🎬</span>
+        </div>
+      </div>
+      <div class="film-info">
+        <div class="film-title-t">${f.title}</div>
+        <div class="film-meta-t">${f.year}</div>
+        <div class="film-role-t">${f.role}</div>
+      </div>`;
+        grid.appendChild(card);
+      });
+
+      /* ── Mobile nav ── */
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      });
+      function closeMenu() {
+        menuBtn.classList.remove("open");
+        navLinks.classList.remove("open");
+      }
+    </script>
+  </body>
+</html>
